@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="900" height="600" style="border: 1px solid indigo" onclick="drawLoop()">
+<script>
+  function Circle(x, y, radius) {
+    this.x = Math.random() * x
+    this.y = Math.random() * y
+    this.radius = Math.random() * radius
+  }
+
+
+
+    function draw() {
+      let ctx = document.getElementById('myCanvas').getContext('2d')
+      let circle = new Circle(900, 600, 50)
+      ctx.beginPath()
+      ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI)
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+      ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+      ctx.fill()
+      ctx.closePath()
+    }
+
+function drawLoop() {
+  let canvas = document.getElementById('myCanvas');
+  let ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = 0; i < 160; i++) {
+    draw()
+  }
+
+}
+</script>
+</canvas>
+</body>
+</html>
